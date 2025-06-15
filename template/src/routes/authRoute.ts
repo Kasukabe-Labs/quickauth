@@ -5,6 +5,10 @@ import {
   signinController,
   signupController,
 } from "../controllers/authController";
+import {
+  googleAuthCallback,
+  googleAuthRedirect,
+} from "../controllers/googleControllers";
 
 const AuthRouter = Router();
 
@@ -25,11 +29,11 @@ AuthRouter.get("/me", (req: Request, res: Response) => {
 });
 
 AuthRouter.get("/google", (req: Request, res: Response) => {
-  //googleController()
+  googleAuthRedirect(req, res);
 });
 
 AuthRouter.get("/google/callback", (req: Request, res: Response) => {
-  //googleCallbackController()
+  googleAuthCallback(req, res);
 });
 
 AuthRouter.get("/github", (req: Request, res: Response) => {

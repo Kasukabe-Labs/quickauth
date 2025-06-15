@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import connectDB from "./config/database";
 import AuthRouter from "./routes/authRoute";
+import { authMiddleware } from "./middlewares/authMiddleware";
 
 const app = express();
 
@@ -24,7 +25,7 @@ const PORT = process.env.PORT;
 
 connectDB();
 
-app.get("/health", (req: Request, res: Response) => {
+app.get("/api/health", (req: Request, res: Response) => {
   try {
     res.status(200).json({
       message: "Server is up 🚀",
@@ -37,6 +38,13 @@ app.get("/health", (req: Request, res: Response) => {
 });
 
 app.use("/api/auth", AuthRouter);
+
+//protected route usage
+app.get("/api/protected", authMiddleware, (req: Request, res: Response) => {
+  res.status(200).json({
+    message: "Hey im a protected route 🕵️",
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server litsening on PORT ${PORT}`);
