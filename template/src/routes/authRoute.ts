@@ -1,5 +1,7 @@
 import { Request, Response, Router } from "express";
 import {
+  logoutController,
+  me,
   signinController,
   signupController,
 } from "../controllers/authController";
@@ -15,11 +17,11 @@ AuthRouter.post("/signin", (req: Request, res: Response) => {
 });
 
 AuthRouter.post("/logout", (req: Request, res: Response) => {
-  //logoutController()
+  logoutController(req, res);
 });
 
 AuthRouter.get("/me", (req: Request, res: Response) => {
-  //me()
+  me(req, res);
 });
 
 AuthRouter.get("/google", (req: Request, res: Response) => {
