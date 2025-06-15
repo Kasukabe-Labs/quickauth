@@ -1,16 +1,31 @@
 {
-  "name": "quickauth",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "kasukabe-quickauth",
+  "version": "1.0.2",
+  "description": "A lightweight, plug-and-play authentication starter",
+  "main": "bin/index.js",
+  "type": "module",
+  "bin": {
+    "kasukabe-express-ts": "./bin/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@types/axios": "^0.9.36",
-    "axios": "^1.10.0"
-  }
+  "files": [
+    "template/",
+    "bin/"
+  ],
+  "scripts": {
+    "prepublishOnly": "chmod +x bin/index.js"
+  },
+  "dependencies": {
+    "fs-extra": "^11.1.1",
+    "inquirer": "^9.2.17"
+  },
+  "keywords": [
+    "express",
+    "auth",
+    "typescript",
+    "cli",
+    "jwt",
+    "secure-auth"
+  ],
+  "author": "Subhraneel Goswami",
+  "license": "MIT"
 }
